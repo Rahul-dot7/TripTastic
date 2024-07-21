@@ -1,24 +1,14 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import App from "./components/App";
+import Root from "./Root";
 
-const cors = require("cors");
-const apiRoutes = require("./routes/index");
-
-const setupAndStartServer = async () => {
-  // create a express object
-  const app = express();
-  const PORT = 5000;
-
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(cors());
-  app.use("/api", apiRoutes);
-
-
-  // http://localhost:5000/api/bookings
-  app.listen(PORT, async () => {
-    console.log(`Server started at ${PORT}`);
-    // console.log();
-  });
-};
-setupAndStartServer();
+ReactDOM.render(
+  <Root>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Root>,
+  document.getElementById("root")
+);
